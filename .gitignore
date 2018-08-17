@@ -1,0 +1,8 @@
+.DS_Store
+.idea
+.project
+.salesforce
+.settings
+.sfdx
+.vscode
+node_modules
