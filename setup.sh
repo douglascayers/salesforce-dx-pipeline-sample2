@@ -13,7 +13,7 @@ set -o nounset    # fail on unset variables
 HEROKU_TEAM_NAME=""
 
 # Descriptive name for the Heroku app
-HEROKU_APP_NAME="YOUR_APP_NAME"
+HEROKU_APP_NAME="dca-20180817"
 
 # Name of the Heroku apps you'll use
 HEROKU_DEV_APP_NAME="$HEROKU_APP_NAME-dev"
@@ -30,7 +30,7 @@ STAGING_USERNAME="TestOrg"
 PROD_USERNAME="ProdOrg"
 
 # Your package name from force:package:list
-PACKAGE_NAME="YOUR_PACKAGE_NAME"
+PACKAGE_NAME="Pkg20180817"
 
 # Repository with your code (username/repo)
 # Only specify a value if you have already connected your GitHub account with Heroku,
