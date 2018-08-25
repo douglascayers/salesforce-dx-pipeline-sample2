@@ -12,7 +12,7 @@
       "url": "https://github.com/heroku/salesforce-cli-buildpack#v3"
     },
     {
-      "url": "https://github.com/douglascayers/salesforce-buildpack"
+      "url": "https://github.com/douglascayers/salesforce-buildpack2"
     }
   ],
   "env": {
