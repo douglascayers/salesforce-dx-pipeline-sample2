@@ -13,6 +13,9 @@
     },
     {
       "url": "https://github.com/douglascayers/salesforce-buildpack2"
+    },
+    {
+      "url": "heroku/nodejs"
     }
   ],
   "env": {
