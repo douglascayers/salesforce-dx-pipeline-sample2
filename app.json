@@ -27,6 +27,18 @@
     },
     "HEROKU_APP_NAME" : {
       "required": true
+    },
+    "OAUTH_SALESFORCE_CLIENT_ID" : {
+      "required": true
+    },
+    "OAUTH_SALESFORCE_CLIENT_SECRET" : {
+      "required": true
+    },
+    "OAUTH_SALESFORCE_LOGIN_URL" : {
+      "required": true
+    },
+    "OAUTH_SALESFORCE_REDIRECT_URI" : {
+      "required": true
     }
   },
   "environments": {
