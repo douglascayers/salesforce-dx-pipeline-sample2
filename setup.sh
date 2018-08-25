@@ -13,7 +13,7 @@ set -o nounset    # fail on unset variables
 HEROKU_TEAM_NAME=""
 
 # Descriptive name for the Heroku app
-HEROKU_APP_NAME="dca-20180817"
+HEROKU_APP_NAME="dca-20180825"
 
 # Name of the Heroku apps you'll use
 HEROKU_DEV_APP_NAME="$HEROKU_APP_NAME-dev"
