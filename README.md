@@ -1,8 +1,11 @@
-# salesforce-dx-pipeline-sample
+# Salesforce DX Heroku Pipelines Sample App
 
-This sample uses unlocked second generation packages (2GPs) to deploy project updates. If you're looking to perform metadata deploys instead, please use [https://github.com/wadewegner/salesforce-dx-pipeline-mdapi-sample](https://github.com/wadewegner/salesforce-dx-pipeline-mdapi-sample).
+This sample uses unlocked second generation packages [(2GPs)](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_dev2gp.htm) to deploy project updates.
 
-Using this sample app and the resources in this repo, you can setup a Heroku Pipeline to drive CI / CD for Salesforce DX. This sample uses the [salesforce-buildpack](https://github.com/heroku/salesforce-buildpack) and the [salesforce-cli-buildpack](https://github.com/heroku/salesforce-cli-buildpack).
+Using this sample app and the resources in this repo, you can setup a Heroku Pipeline to drive CI / CD for Salesforce DX.
+If you're new to Heroku Pipelines, check out this TrailheaDX video [How High Performing Software Teams Use Heroku Pipelines for Continuous Delivery](https://www.youtube.com/watch?v=Vqt6ZNLxqnY).
+
+This sample uses the [salesforce-buildpack](https://github.com/heroku/salesforce-buildpack) and the [salesforce-cli-buildpack](https://github.com/heroku/salesforce-cli-buildpack).
 
 ![image](https://user-images.githubusercontent.com/746259/36068129-5c8a19b2-0e82-11e8-96b5-a9fed295a33d.png)
 
@@ -49,15 +52,29 @@ sfdx force:package:create -n <PACKAGE_NAME> -d <PACKAGE_DESCRIPTION> -t Unlocked
 
 10. Open your pipeline: `heroku pipelines:open <PIPELINE_NAME>`
 
-11. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
+11. For the review stage, click **Enable Review Apps..**.
+
+12. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
 
 Now you're all set.
 
 ## Usage
 
-To demo, simply submit a pull request. It's easiest to do through the GitHub UI. Simply edit a page, then instead of committing directly to the branch, create a pull request. Once created, the review app is ready to go. When the pull request is accepted, the review app is deleted and the application is deployed to your staging org.
+1. Open a pull request on GitHub, this will cause a review app to be created in your Heroku Pipeline automatically.
 
-If you want to work against the latest buildpacks, update the version # (or remove entirely) in `app.json`.
+    - It's easiest to do through the GitHub UI. Simply edit a page, then instead of committing directly to the branch, create a pull request.
+    - Once created, the review app is ready to go.
+
+2. Close the pull request on GitHub, this will also delete the empemeral review app as it is no longer necessary.
+
+    - If you accepted and merged the changes into your `master` branch, then the buildpack will create and install a new package version into your development org.
+
+3. Promote the app from the development stage to staging and production stages, this will install the same package version that was last built by the development stage.
+
+## Updating Buildpacks
+
+If you want to work against the latest buildpacks, update the version # (or remove entirely) in `app.json` and `setup.sh`.
+If you have already ran the `setup.sh` script to create your pipeline, then you will also need to manually update the assigned buildpacks to each Heroku app in the pipeline.
 
 ## Clean up
 
