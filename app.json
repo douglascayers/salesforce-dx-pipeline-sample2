@@ -1,12 +1,9 @@
 {
   "name": "salesforce-dx-pipeline-sample",
   "version": "0.0.1",
-  "description": "Test application for the salesforce-buildpack",
-  "repository": "https://github.com/wadewegner/salesforce-dx-pipeline-sample",
-  "author": "Wade Wegner",
-  "license": "ALv2",
-  "bugs": "https://github.com/wadewegner/salesforce-dx-pipeline-sample/issues",
-  "homepage": "https://github.com/wadewegner/salesforce-dx-pipeline-sample#readme",
+  "description": "Sample application for the salesforce-buildpack",
+  "author": "Salesforce",
+  "repository": "https://github.com/TrailheadTechnicalCurriculum/salesforce-dx-pipeline-sample",
   "buildpacks": [
     {
       "url": "https://github.com/heroku/salesforce-cli-buildpack#v3"
@@ -35,9 +32,6 @@
       "required": true
     },
     "OAUTH_SALESFORCE_LOGIN_URL" : {
-      "required": true
-    },
-    "OAUTH_SALESFORCE_REDIRECT_URI" : {
       "required": true
     }
   },

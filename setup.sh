@@ -63,6 +63,13 @@ heroku apps:create $HEROKU_DEV_APP_NAME $HEROKU_TEAM_FLAG
 heroku apps:create $HEROKU_STAGING_APP_NAME $HEROKU_TEAM_FLAG
 heroku apps:create $HEROKU_PROD_APP_NAME $HEROKU_TEAM_FLAG
 
+# Make app name available without need for labs add-on
+# https://stackoverflow.com/questions/12570579/how-to-get-heroku-app-name-url-from-inside-the-app
+# https://devcenter.heroku.com/articles/dyno-metadata
+heroku config:set HEROKU_APP_NAME=$HEROKU_DEV_APP_NAME -a $HEROKU_DEV_APP_NAME
+heroku config:set HEROKU_APP_NAME=$HEROKU_STAGING_APP_NAME -a $HEROKU_STAGING_APP_NAME
+heroku config:set HEROKU_APP_NAME=$HEROKU_PROD_APP_NAME -a $HEROKU_PROD_APP_NAME
+
 # Set the stage (since STAGE isn't required, review apps don't get one)
 heroku config:set STAGE=DEV -a $HEROKU_DEV_APP_NAME
 heroku config:set STAGE=STAGING -a $HEROKU_STAGING_APP_NAME
