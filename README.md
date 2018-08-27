@@ -58,15 +58,17 @@ That's it. Along with the one-time setup scripts (`setup-vars.sh`, `setup-pipeli
 
 10. Open your pipeline: `heroku pipelines:open <PIPELINE_NAME>`
 
-11. For the review stage, click **Enable Review Apps..**.
+11. Connect your Heroku account with GitHub
 
-12. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
+12. For the review stage, click **Enable Review Apps..**.
 
-13. Create a Connected App for OAuth ([instructions](https://github.com/douglascayers/salesforce-buildpack2#one-click-login-to-salesforce-orgs-via-heroku-app-urls)).
+13. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
 
-14. Update the oauth values in `setup-vars.sh` accordingly (e.g. `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
+14. Create a Connected App for OAuth ([instructions](https://github.com/douglascayers/salesforce-buildpack2#one-click-login-to-salesforce-orgs-via-heroku-app-urls)).
 
-15. Run `./setup-oauth.sh` to update the Heroku apps' config vars.
+15. Update the oauth values in `setup-vars.sh` accordingly (e.g. `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
+
+16. Run `./setup-oauth.sh` to update the Heroku apps' config vars.
 
 Now you're all set.
 
