@@ -33,6 +33,9 @@
     },
     "OAUTH_SALESFORCE_LOGIN_URL" : {
       "required": true
+    },
+    "OAUTH_SALESFORCE_REDIRECT_URI" : {
+      "required": true
     }
   },
   "environments": {
