@@ -5,7 +5,7 @@ This sample uses unlocked second generation packages [(2GPs)](https://developer.
 Using this sample app and the resources in this repo, you can setup a Heroku Pipeline to drive CI / CD for Salesforce DX.
 If you're new to Heroku Pipelines, check out this overview video [How High Performing Software Teams Use Heroku Pipelines for Continuous Delivery](https://www.youtube.com/watch?v=Vqt6ZNLxqnY).
 
-This sample uses the [salesforce-buildpack](https://github.com/douglascayers/salesforce-buildpack) and the [salesforce-cli-buildpack](https://github.com/heroku/salesforce-cli-buildpack).
+This sample uses the [salesforce-buildpack](https://github.com/douglascayers/salesforce-buildpack2) and the [salesforce-cli-buildpack](https://github.com/heroku/salesforce-cli-buildpack).
 
 ![image](https://user-images.githubusercontent.com/746259/36068129-5c8a19b2-0e82-11e8-96b5-a9fed295a33d.png)
 
