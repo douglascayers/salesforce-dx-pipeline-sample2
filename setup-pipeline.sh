@@ -122,6 +122,10 @@ heroku buildpacks:add -i 2 https://github.com/douglascayers/salesforce-buildpack
 heroku buildpacks:add -i 2 https://github.com/douglascayers/salesforce-buildpack2 -a $HEROKU_STAGING_APP_NAME
 heroku buildpacks:add -i 2 https://github.com/douglascayers/salesforce-buildpack2 -a $HEROKU_PROD_APP_NAME
 
+heroku buildpacks:add -i 3 heroku/nodejs -a $HEROKU_DEV_APP_NAME
+heroku buildpacks:add -i 3 heroku/nodejs -a $HEROKU_STAGING_APP_NAME
+heroku buildpacks:add -i 3 heroku/nodejs -a $HEROKU_PROD_APP_NAME
+
 # Create Pipeline
 heroku pipelines:create $HEROKU_PIPELINE_NAME -a $HEROKU_DEV_APP_NAME -s development $HEROKU_TEAM_FLAG
 heroku pipelines:add $HEROKU_PIPELINE_NAME -a $HEROKU_STAGING_APP_NAME -s staging
