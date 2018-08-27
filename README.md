@@ -21,7 +21,7 @@ To use Heroku Pipelines with any Salesforce DX project, you only need to do two 
 
 2. Create a `sfdx.yml` file.
 
-That's it. Along with the one-time setup scripts (`setup-vars.sh`, `setup-pipeline.sh`, and `setup-oauth.sh`) you find in this repo, the buildpacks do the rest.
+That's it. Along with the one-time setup scripts (`setup-pipeline.sh` and `setup-oauth.sh`) you find in this repo, the buildpacks do the rest.
 
 ## Setup
 
@@ -46,7 +46,7 @@ That's it. Along with the one-time setup scripts (`setup-vars.sh`, `setup-pipeli
 
 6. Clone the repository locally.
 
-7. Update the values in `setup-vars.sh` accordingly, ignoring the oauth vars for now (e.g. `HEROKU_TEAM_NAME`, `HEROKU_APP_NAME`, `DEV_HUB_USERNAME`, `DEV_USERNAME`, `STAGING_USERNAME`, `PROD_USERNAME`, `GITHUB_REPO`, and `PACKAGE_NAME`).
+7. Update the values in `setup-pipeline.sh` accordingly (e.g. `HEROKU_TEAM_NAME`, `HEROKU_APP_NAME`, `DEV_HUB_USERNAME`, `DEV_USERNAME`, `STAGING_USERNAME`, `PROD_USERNAME`, `GITHUB_REPO`, and `PACKAGE_NAME`).
 
 8. Create an unlocked package in your Dev Hub org, then commit and push the auto-updated `sfdx-project.json` to GitHub.
 
@@ -66,7 +66,7 @@ That's it. Along with the one-time setup scripts (`setup-vars.sh`, `setup-pipeli
 
 14. Create a Connected App for OAuth ([instructions](https://github.com/douglascayers/salesforce-buildpack2#one-click-login-to-salesforce-orgs-via-heroku-app-urls)).
 
-15. Update the oauth values in `setup-vars.sh` accordingly (e.g. `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
+15. Update the oauth values in `setup-oauth.sh` accordingly (e.g. `HEROKU_APP_NAME`, `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
 
 16. Run `./setup-oauth.sh` to update the Heroku apps' config vars.
 

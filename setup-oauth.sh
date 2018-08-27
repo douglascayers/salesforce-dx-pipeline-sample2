@@ -7,7 +7,22 @@ set -o nounset    # fail on unset variables
 # Script to setup a fully configured pipeline for Salesforce DX #
 #################################################################
 
-source setup-vars.sh
+### Declare values
+
+# Descriptive name for the Heroku app
+HEROKU_APP_NAME="YOUR_APP_NAME"
+
+# Name of the Heroku apps you'll use
+HEROKU_DEV_APP_NAME="$HEROKU_APP_NAME-dev"
+HEROKU_STAGING_APP_NAME="$HEROKU_APP_NAME-staging"
+HEROKU_PROD_APP_NAME="$HEROKU_APP_NAME-prod"
+
+# Connected App OAuth Settings
+# WARNING: Do not commit this to your repository, treat them like passwords.
+OAUTH_SALESFORCE_CLIENT_ID=
+OAUTH_SALESFORCE_CLIENT_SECRET=
+OAUTH_SALESFORCE_LOGIN_URL=
+OAUTH_SALESFORCE_REDIRECT_URI=
 
 # Add OAuth settings
 
