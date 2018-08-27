@@ -38,6 +38,7 @@ PACKAGE_NAME="YOUR_PACKAGE_NAME"
 GITHUB_REPO=
 
 # Connected App OAuth Settings
+# WARNING: Do not commit this to your repository, treat them like passwords.
 OAUTH_SALESFORCE_CLIENT_ID=
 OAUTH_SALESFORCE_CLIENT_SECRET=
 OAUTH_SALESFORCE_LOGIN_URL=
