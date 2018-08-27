@@ -21,7 +21,7 @@ To use Heroku Pipelines with any Salesforce DX project, you only need to do two 
 
 2. Create a `sfdx.yml` file.
 
-That's it. Along with the `setup.sh` script you find in this repo, the buildpacks do the rest.
+That's it. Along with the one-time setup scripts (`setup-vars.sh`, `setup-pipeline.sh`, and `setup-oauth.sh`) you find in this repo, the buildpacks do the rest.
 
 ## Setup
 
@@ -42,41 +42,31 @@ That's it. Along with the `setup.sh` script you find in this repo, the buildpack
 
 4. Ensure you see all four orgs when you run `sfdx force:org:list`.
 
-5. Create a Connected App for OAuth ([instructions](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_defining_remote_access_applications.htm)).
+5. Fork this repository.
 
-    - For your convenience, the Salesforce buildpack supports one-click access to the Salesforce environments of your pipeline when you click the "Open App" button in Heroku.
-    - However, as a layer of security when navigating to a Heroku app's public URL or clicking the "Open App" button in Heroku,
-      the Salesforce buildpack uses OAuth to a Salesforce org (an identify provider) of your choice to check if the user is authorized for automatic login to the Salesforce environments
-      represented by the Heroku apps in your pipeline.
-    - Only the **Access your basic information** scope is needed.
-    - You should set the [OAuth policy](https://help.salesforce.com/articleView?id=connected_app_manage_edit.htm&type=5) to **Admin-approved users are pre-authorized** then associate the Connected App and your authorized users to a permission set.
-    - The callback URL of the Connected App should point to one of your Heroku apps in your pipeline to the path `/oauth2/callback` (e.g. https://[YOUR-APP-NAME].herokuapp.com/oauth2/callback).
+6. Clone the repository locally.
 
-    Note: To disable one-click login to the Salesforce orgs via the Heroku apps URLs, do not create a Connected App and do not specify any `OAUTH_*` properties in `setup.sh` or as config vars in your Heroku apps.
+7. Update the values in `setup-vars.sh` accordingly, ignoring the oauth vars for now (e.g. `HEROKU_TEAM_NAME`, `HEROKU_APP_NAME`, `DEV_HUB_USERNAME`, `DEV_USERNAME`, `STAGING_USERNAME`, `PROD_USERNAME`, `GITHUB_REPO`, and `PACKAGE_NAME`).
 
-    Note: For finer-grained control of which users can automatically log in to which Salesforce orgs via the Heroku apps URLs, you may choose to create multiple Connected Apps.
-          For example, for development stage, that app's config vars may point to a Connected App whose access is granted to many of your developers, but
-          your staging and production Heroku app's config vars may point to a Connected App that only a select few are granted access and thereby restricting who can one-click login to the staging and production orgs from Heroku.
+8. Create an unlocked package in your Dev Hub org, then commit and push the auto-updated `sfdx-project.json` to GitHub.
 
-6. Fork this repository.
+    ```
+    sfdx force:package:create -n <PACKAGE_NAME> -d <PACKAGE_DESCRIPTION> -t Unlocked -e -v <DEV_HUB_USERNAME>
+    ```
 
-7. Clone the repository locally.
+9. Run `./setup-pipeline.sh` to build your pipeline.
 
-8. Update the values in `setup.sh` accordingly (e.g. `HEROKU_TEAM_NAME`, `HEROKU_APP_NAME`, `DEV_HUB_USERNAME`, `DEV_USERNAME`, `STAGING_USERNAME`, `PROD_USERNAME`, `GITHUB_REPO`, `PACKAGE_NAME`, `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
+10. Open your pipeline: `heroku pipelines:open <PIPELINE_NAME>`
 
-9. Create an unlocked package in your hub org:
+11. For the review stage, click **Enable Review Apps..**.
 
-```
-sfdx force:package:create -n <PACKAGE_NAME> -d <PACKAGE_DESCRIPTION> -t Unlocked -e -v <DEV_HUB_USERNAME>
-```
+12. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
 
-10. Run `./setup.sh`.
+13. Create a Connected App for OAuth ([instructions](https://github.com/douglascayers/salesforce-buildpack2#one-click-login-to-salesforce-orgs-via-heroku-app-urls)).
 
-11. Open your pipeline: `heroku pipelines:open <PIPELINE_NAME>`
+14. Update the oauth values in `setup-vars.sh` accordingly (e.g. `OAUTH_SALESFORCE_CLIENT_ID`, `OAUTH_SALESFORCE_CLIENT_SECRET`, `OAUTH_SALESFORCE_LOGIN_URL`, and `OAUTH_SALESFORCE_REDIRECT_URI`).
 
-12. For the review stage, click **Enable Review Apps..**.
-
-13. For the development stage, click the expansion button and then click **Configure automatic deploys..**. Then click **Enable Automatic Deploys**. Do not check "Wait for CI to pass before deploy" unless you have CI setup.
+15. Run `./setup-oauth.sh` to update the Heroku apps' config vars.
 
 Now you're all set.
 

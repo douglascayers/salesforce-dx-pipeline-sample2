@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -o errexit    # always exit on error
+set -o nounset    # fail on unset variables
+
+#################################################################
+# Script to setup a fully configured pipeline for Salesforce DX #
+#################################################################
+
+source setup-vars.sh
+
+# Add OAuth settings
+
+heroku config:set OAUTH_SALESFORCE_CLIENT_ID="$OAUTH_SALESFORCE_CLIENT_ID" -a $HEROKU_DEV_APP_NAME
+heroku config:set OAUTH_SALESFORCE_CLIENT_ID="$OAUTH_SALESFORCE_CLIENT_ID" -a $HEROKU_STAGING_APP_NAME
+heroku config:set OAUTH_SALESFORCE_CLIENT_ID="$OAUTH_SALESFORCE_CLIENT_ID" -a $HEROKU_PROD_APP_NAME
+
+heroku config:set OAUTH_SALESFORCE_CLIENT_SECRET="$OAUTH_SALESFORCE_CLIENT_SECRET" -a $HEROKU_DEV_APP_NAME
+heroku config:set OAUTH_SALESFORCE_CLIENT_SECRET="$OAUTH_SALESFORCE_CLIENT_SECRET" -a $HEROKU_STAGING_APP_NAME
+heroku config:set OAUTH_SALESFORCE_CLIENT_SECRET="$OAUTH_SALESFORCE_CLIENT_SECRET" -a $HEROKU_PROD_APP_NAME
+
+heroku config:set OAUTH_SALESFORCE_LOGIN_URL="$OAUTH_SALESFORCE_LOGIN_URL" -a $HEROKU_DEV_APP_NAME
+heroku config:set OAUTH_SALESFORCE_LOGIN_URL="$OAUTH_SALESFORCE_LOGIN_URL" -a $HEROKU_STAGING_APP_NAME
+heroku config:set OAUTH_SALESFORCE_LOGIN_URL="$OAUTH_SALESFORCE_LOGIN_URL" -a $HEROKU_PROD_APP_NAME
+
+heroku config:set OAUTH_SALESFORCE_REDIRECT_URI="$OAUTH_SALESFORCE_REDIRECT_URI" -a $HEROKU_DEV_APP_NAME
+heroku config:set OAUTH_SALESFORCE_REDIRECT_URI="$OAUTH_SALESFORCE_REDIRECT_URI" -a $HEROKU_STAGING_APP_NAME
+heroku config:set OAUTH_SALESFORCE_REDIRECT_URI="$OAUTH_SALESFORCE_REDIRECT_URI" -a $HEROKU_PROD_APP_NAME
