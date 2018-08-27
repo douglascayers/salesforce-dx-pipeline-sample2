@@ -6,4 +6,5 @@
 .settings
 .sfdx
 .vscode
+setup*.sh
 node_modules
